@@ -7,12 +7,33 @@ SHOW_REAL_VIDEO = False   # Set this to True to get real camera video from cv2
 
 ########################################################################
 
+# 17-long
+# ORDER = (' ', '.', "'", ',', ':', ';', 'c', 'l', 'x', 'o', 'k', 'X', 'd', 'O', '0', 'K', 'N')
+# L = len(ORDER)
+
+# # 9-long
+# ORDER = (' ', "'", ':', 'c', 'x', 'k', 'd', '0', 'N')
+# L = len(ORDER)
+
+# 5-long
+ORDER = (' ', ':', 'x', 'd', 'N')
+L = len(ORDER)
+
+# # 3-long
+# ORDER = (' ', 'x', 'N')
+# L = len(ORDER)
+
+# # https://stackoverflow.com/a/67780964
+# ORDER = tuple([x for x in '''$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,"^`'. '''[::-1]])
+# L = len(ORDER)
+
+# # https://stackoverflow.com/a/74186686
+# ORDER = tuple([x for x in ''' `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@'''][::8])
+# L = len(ORDER)
+
 
 def convert_row_to_ascii(row):
-    # 17-long
-    ORDER = (' ', '.', "'", ',', ':', ';', 'c', 'l',
-             'x', 'o', 'k', 'X', 'd', 'O', '0', 'K', 'N')
-    return tuple(ORDER[int(x / (255 / 16))] for x in row)[::-1]
+    return tuple(ORDER[int(x / (255 / L))] for x in row)[::-1]
 
 
 def convert_to_ascii(input_grays):
