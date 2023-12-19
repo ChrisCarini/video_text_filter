@@ -47,7 +47,7 @@ def print_array(input_ascii_array):
 
 cap = cv2.VideoCapture(0)
 
-while(cv2.waitKey(1) & 0xFF != ord('q')):
+while cv2.waitKey(1) & 0xFF != ord('q'):
     # Get screensize for reduction
     screen_height, screen_width = os.popen('stty size', 'r').read().split()
 
